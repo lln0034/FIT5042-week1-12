@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 
 
-public class SimplePropertyRepositoryImpl implements PropertyRepository{
+public class SimplePropertyRepositoryImpl{
 	private ArrayList properties;
 	SimplePropertyRepositoryImpl simP=new SimplePropertyRepositoryImpl();
 	public ArrayList getProperties() {

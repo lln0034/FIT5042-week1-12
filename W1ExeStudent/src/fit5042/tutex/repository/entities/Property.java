@@ -2,6 +2,10 @@ package fit5042.tutex.repository.entities;
 
 public class Property {
 	private int id; 
+	private String address;
+	private int numberOfBedrooms;
+	private int size;
+	private double price;
 	
 	@Override
 	public String toString() {
@@ -16,10 +20,6 @@ public class Property {
 		this.size = size;
 		this.price = price;
 	}
-	private String address;
-	private int numberOfBedrooms;
-	private int size;
-	private double price;
 	public int getId() {
 		return id;
 	}

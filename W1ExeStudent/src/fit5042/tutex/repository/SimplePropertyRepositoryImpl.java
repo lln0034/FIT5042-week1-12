@@ -15,39 +15,61 @@ import java.util.List;
  * This class implements the PropertyRepository class. You will need to add the keyword
  * "implements" PropertyRepository. 
  * 
- * @author Linan Lin
+ * @author Junyang
  */
-public class SimplePropertyRepositoryImpl implements PropertyRepository{
-	private List<Property> property; 
-	
+public class SimplePropertyRepositoryImpl  implements PropertyRepository{
 
-    public SimplePropertyRepositoryImpl() {
-        
+	ArrayList<Property> properties=new ArrayList<Property>();
+	
+    	
+    	
+    public ArrayList<Property> getProperties() {
+		return properties;
+	}
+
+	public void setProperties(ArrayList<Property> properties) {
+		this.properties = properties;
+	}
+
+	public SimplePropertyRepositoryImpl() {
+		
     }
 
-	public List<Property> getProperty() {
-		return property;
+
+	@Override
+	public void addProperty(Property property) throws Exception {
+		// TODO Auto-generated method stub
+		properties.add(property);
+	    
+		
 	}
 
-	public void setProperty(List<Property> property) {
-		this.property = property;
+	@Override
+	public Property searchPropertyById(int id) throws Exception {
+		// TODO Auto-generated method stub
+		Property p = null;
+		for(Property property:properties)
+		{
+			if (property.getId()==id)
+			{
+				p=property;
+			}
+			else 
+			{
+				p=null;
+			}
+			
+		}
+		return p;
 	}
-	
-	public void addProperty(Property p)
-	{
-		SimplePropertyRepositoryImpl simp = new SimplePropertyRepositoryImpl();
-		simp.addProperty(p);
-	}
-	public Property searchPropertyById(int p)
-	{
-		SimplePropertyRepositoryImpl simp = new SimplePropertyRepositoryImpl();
-		Property searched=simp.searchPropertyById(p);
-		return searched;
-	}
-	public List<Property> getAllProperties()
-	{
-		SimplePropertyRepositoryImpl simp = new SimplePropertyRepositoryImpl();
-		return simp.getAllProperties();
+
+	@Override
+	public List<Property> getAllProperties() throws Exception {
+		// TODO Auto-generated method stub
+		
+		List<Property> properties=getProperties();
+		
+		return properties;
 	}
     
 }

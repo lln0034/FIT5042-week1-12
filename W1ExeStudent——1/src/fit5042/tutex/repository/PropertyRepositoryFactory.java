@@ -28,8 +28,7 @@ public class PropertyRepositoryFactory {
      *
      * @return the property repository object created
      */
-    @SuppressWarnings("deprecation")
-	private static PropertyRepository createInstance() {
+    private static PropertyRepository createInstance() {
         try {
 
             Properties repositoryProperties = new Properties();

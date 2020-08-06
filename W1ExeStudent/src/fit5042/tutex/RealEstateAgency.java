@@ -3,9 +3,9 @@ package fit5042.tutex;
 import fit5042.tutex.repository.PropertyRepository;
 import fit5042.tutex.repository.PropertyRepositoryFactory;
 import fit5042.tutex.repository.entities.Property;
-import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.ArrayList;
+//import java.io.IOException;
+//import java.math.BigDecimal;
+//import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 //import java.util.logging.Level;
@@ -25,7 +25,7 @@ public class RealEstateAgency {
     private final PropertyRepository propertyRepository;
 
     public RealEstateAgency(String name) throws Exception {
-        this.name = name;
+        this.setName(name);
         this.propertyRepository = PropertyRepositoryFactory.getInstance();
     }
     
@@ -113,4 +113,12 @@ public class RealEstateAgency {
             System.out.println("Application fail to run: " + ex.getMessage());
         }
     }
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 }

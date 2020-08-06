@@ -1,7 +1,9 @@
- package fit5042.tutex.calculator;
-
+package fit5042.tutex.calculator;
 import javax.ejb.Remote;
-
+/**
+* The interface defines the common behaviours across all monthly payment calculator implementation *
+* @author Eddie
+*/
 @Remote
 public interface MonthlyPaymentCalculator {
   /**

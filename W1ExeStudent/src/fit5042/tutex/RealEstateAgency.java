@@ -39,11 +39,15 @@ public class RealEstateAgency {
         Property p4=new Property(4, "3 Hamilton St, Bentleigh VIC 3204, Australia ", 2, 170, 435.0D);
         Property p5=new Property(5, "82 Spring Rd, Hampton East VIC 3188, Australia ", 1, 50, 820.0D);
     try {
+    	int i= propertyRepository.getAllProperties().size();
 			propertyRepository.addProperty(p1);
 			propertyRepository.addProperty(p2);
 			propertyRepository.addProperty(p3);
 			propertyRepository.addProperty(p4);
 			propertyRepository.addProperty(p5);
+			int y=propertyRepository.getAllProperties().size()-i;
+			
+			System.out.println( y + " properties added successfully");
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -100,6 +104,7 @@ public class RealEstateAgency {
     
     public void run() {
         createProperty();
+        
         System.out.println("********************************************************************************");
         displayProperties();
         System.out.println("********************************************************************************");

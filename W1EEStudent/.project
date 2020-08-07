@@ -4,6 +4,7 @@
 	<comment></comment>
 	<projects>
 		<project>W1ExeStudentEJB</project>
+		<project>W1ExeStudentCommon</project>
 		<project>W1ExeStudentWar</project>
 	</projects>
 	<buildSpec>

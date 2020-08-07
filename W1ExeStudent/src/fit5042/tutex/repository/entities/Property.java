@@ -10,7 +10,7 @@ public class Property {
     private double price;
 
     public String toString() {
-        return this.id + " " + this.address + " " + this.numberOfBedrooms + "BR)s_ " + this.size + "sqm " + "$" + this.price + ",000.00";
+        return this.id + " " + this.address + " " + this.numberOfBedrooms + "BR(s) " + this.size + "sqm " + "$" +  (int)this.price+",000.00" ;
     }
 
     public Property(int id, String address, int numberOfBedrooms, int size, double price) {

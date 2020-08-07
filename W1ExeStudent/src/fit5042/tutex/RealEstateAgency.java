@@ -81,7 +81,7 @@ public class RealEstateAgency {
     // complete this method
     public void searchPropertyById() {
     	try {
-    		System.out.println(" Ebter the iD of the property you want to search:  ");
+    		System.out.println(" Enter the iD of the property you want to search:");
     		Scanner sc=new Scanner(System.in);
     		int id=sc.nextInt();
 			List<Property> p=propertyRepository.getAllProperties();

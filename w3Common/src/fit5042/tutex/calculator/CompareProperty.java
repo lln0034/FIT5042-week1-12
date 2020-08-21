@@ -9,4 +9,6 @@ public interface CompareProperty {
 	void addProperty(Property property);
 	void removeProperty(Property property);
 	int getBestPerRoom();
+	//write the interface without body 
+	//add annotation of remote can use in ejb
 }

@@ -29,7 +29,7 @@ public class ComparePropertySessionBean implements CompareProperty{
 	@Override
 	public void removeProperty(Property property) {
 		// TODO Auto-generated method stub
-		
+		//for each loop, find the property has the same property id and remove the one
 		for(Property p: pList) {
 			if(p.getPropertyId()==property.getPropertyId()) {
 				
@@ -45,11 +45,14 @@ public class ComparePropertySessionBean implements CompareProperty{
 		int id=0;
 		double price=1000000000.00;
 		for(Property p: pList) {
+			//for each loop 
+			//find the one under the budget
 			
 			if(p.getPrice()/p.getNumberOfBedrooms() < price) {
 				
 				id=p.getPropertyId();
 				price=p.getPrice()/p.getNumberOfBedrooms();
+				//price is the current best per room 
 			}
 			
 		}

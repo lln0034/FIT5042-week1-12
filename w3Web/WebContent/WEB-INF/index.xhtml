@@ -161,9 +161,13 @@
                         <td>Number of Years: </td>
                         <td><h:inputText id="numberOfYears" value="#{loanManagedBean.loan.numberOfYears}">
                                 <f:converter converterId="javax.faces.Integer" />
-                             <f:validateLongRange minimum ="1"/></h:inputText>
+                             <f:validateLongRange minimum ="1"/>
+                             
+                          <!-- add the validation long range, the number of year would only be valid once the year le 1 -->
+                             </h:inputText>
                             <h:message for = "numberOfYears"
                             class="#{!numberOfYears.valid ? 'label label-warning':'none'}"/>
+                            <!-- warning -->
                             
                             </td>
                         <td>

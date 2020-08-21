@@ -106,7 +106,7 @@ public class JPAPropertyRepositoryImpl implements PropertyRepository {
 		
         //This method will return a list of properties that satisfy the criteria of bellowing a specific budget
 		//Please write your code here
-		//for look, search the propertyList's budget which below or equal to the budget 
+		//for loop, search the propertyList's budget which below or equal to the budget 
 		for (Property p : propertyList) {
     		if (p.getPrice()<=budget) {
     			

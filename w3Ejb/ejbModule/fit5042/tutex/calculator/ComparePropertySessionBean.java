@@ -1,65 +1,94 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package fit5042.tutex.calculator;
 
-import java.util.Set;
-import javax.ejb.Stateful;
+import fit5042.tutex.repository.constants.CommonInstance;
 import fit5042.tutex.repository.entities.Property;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.annotation.PostConstruct;
+import javax.ejb.CreateException;
+import javax.ejb.Stateful;
+//import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
+/**
+ *
+ * @author Elliot
+ * 
+ */
 @Stateful
-public class ComparePropertySessionBean implements CompareProperty{
-	
-	private Set<Property> pList;
-	
+// Stateless - if another client (e.g. another instance of the bean) is trying to access the bean , the container may give the existing instance to that client. 
+  //So the state can be modified by the new client. In other words, no separate bean instances for each client.
+//Stateful, there will be separate bean instance for each client.
+public class ComparePropertySessionBean implements CompareProperty {
 
-	public Set<Property> getpList() {
-		return pList;
-	}
+	private Set<Property> list;
+    
+    // Add business logic below. (Right-click in editor and choose
+    // "Insert Code > Add Business Method")
 
-	public void setpList(Set<Property> pList) {
-		this.pList = pList;
-	}
+    public ComparePropertySessionBean() {
+    	list = new HashSet<>();
+    }
+    
+    @Override
+    public void addProperty(Property property) {
+        list.add(property);
+    }
+    
+    @Override
+    public void removeProperty(Property property) {
+        for (Property p : list) {
+        	if (p.getPropertyId() == property.getPropertyId()) {
+        		list.remove(p);
+        		break;
+        	}
+        }
+    }    
 
-	@Override
-	public void addProperty(Property property) {
-		// TODO Auto-generated method stub
-		pList.add(property);
-		
-	}
+    @Override
+    public int bestPerRoom() {
+        Integer bestID=0;
+        int numberOfRooms;
+        double price;
+        double bestPerRoom=100000000.00;
+        for(Property p : list)
+        {
+            numberOfRooms = p.getNumberOfBedrooms();
+            price = p.getPrice();
+            if(price / numberOfRooms < bestPerRoom)
+            {
+                bestPerRoom = price / numberOfRooms;
+                bestID = p.getPropertyId();
+            }
+        }
+        return bestID;
+    }
 
-	@Override
-	public void removeProperty(Property property) {
-		// TODO Auto-generated method stub
-		//for each loop, find the property has the same property id and remove the one
-		for(Property p: pList) {
-			if(p.getPropertyId()==property.getPropertyId()) {
-				
-				pList.remove(p);
-			}
-			
-		}
-		
-	}
+    /**
+     *
+     * @return 
+     * @throws javax.ejb.CreateException
+     * @throws java.rmi.RemoteException
+     */
+    @PostConstruct
+    public void init() {
+        list=new HashSet<>();
+    }
 
-	@Override
-	public int getBestPerRoom() {
-		int id=0;
-		double price=1000000000.00;
-		for(Property p: pList) {
-			//for each loop 
-			//find the one under the budget
-			
-			if(p.getPrice()/p.getNumberOfBedrooms() < price) {
-				
-				id=p.getPropertyId();
-				price=p.getPrice()/p.getNumberOfBedrooms();
-				//price is the current best per room 
-			}
-			
-		}
-		
-		return id;
-	}
-	
-	
+    public CompareProperty create() throws CreateException, RemoteException {
+        return null;
+    }
+
+    public void ejbCreate() throws CreateException {
+    }
 
 }

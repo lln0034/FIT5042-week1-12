@@ -1,6 +1,5 @@
 package fit5042.tutex.calculator;
 
-import javax.ejb.Remote;
 import javax.ejb.Stateless;
 
 /**

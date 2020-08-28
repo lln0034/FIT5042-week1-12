@@ -77,12 +77,14 @@ public class JPAPropertyRepositoryImpl implements PropertyRepository {
 	public List<ContactPerson> getAllContactPeople() {
 		Set<ContactPerson> contactPersonSet = new HashSet<>();
 		
-		for(Property p: propertyList)
-		{
+		for (Property p : propertyList) {
 			contactPersonSet.add(p.getContactPerson());
-			
+    	}
+		
+		List<ContactPerson> contactPersonList = new ArrayList<>();
+		for (ContactPerson c : contactPersonSet) {
+			contactPersonList.add(c);
 		}
-		List<ContactPerson> contactPersonList=new ArrayList<>(contactPersonSet);
 		
 		return contactPersonList;
 	}
@@ -90,29 +92,23 @@ public class JPAPropertyRepositoryImpl implements PropertyRepository {
 	public Set<Property> searchPropertyByContactPerson(ContactPerson contactPerson) {
 		Set<Property> propertySet = new HashSet<>();
 		
-        //This method will find all the properties which belong to the particular contact person
-		//Please write your code here
-		//for loop, search the peropertyList via its contact person 
 		for (Property p : propertyList) {
-    		if (p.getContactPerson()==contactPerson) {
-    			propertySet.add(p);
-    		}
+			if (p.getContactPerson().equals(contactPerson)) {
+				propertySet.add(p);
+			}
     	}
+		
 		return propertySet;
 	}
 	
 	public List<Property> searchPropertyByBudget(double budget) {
 		List<Property> properties = new ArrayList<>();
 		
-        //This method will return a list of properties that satisfy the criteria of bellowing a specific budget
-		//Please write your code here
-		//for loop, search the propertyList's budget which below or equal to the budget 
 		for (Property p : propertyList) {
-    		if (p.getPrice()<=budget) {
-    			
-    			properties.add(p);
-    		}
-    	}
+			if (p.getPrice() <= budget) {
+				properties.add(p);
+			}
+		}
 		
 		return properties;
     }

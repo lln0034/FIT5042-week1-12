@@ -1,6 +1,7 @@
 package fit5042.tutex.repository.entities;
 
 import java.io.Serializable;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.persistence.Access;

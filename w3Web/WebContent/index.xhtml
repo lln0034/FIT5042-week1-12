@@ -2,12 +2,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"      
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <h:outputStylesheet library="css" name="bootstrap.min.css"></h:outputStylesheet>
-        <title>#{titleController.pageTitle}</title>
+        <title>#{titleController.pageTitle}</title> 
     </h:head>
     <h:body>
         <div class="container">
@@ -19,31 +19,31 @@
 
             <h:form id="MyForm">
                 <table class="table table-bordered table-striped">
-                    <!-- For each property in properties ArrayList... -->
+                    <!-- For each property in properties ArrayList... --> 
                     <tr>
-                        <td>
+                        <td> 
                             <h:outputLabel id="Id" value="Id"  />
                         </td>
-                        <td>
+                        <td> 
                             <h:outputLabel id="Price" value="Price"  />
                         </td>
 
-                        <td>
+                        <td> 
                             <h:outputLabel id="Address" value="Address"/>
                         </td>
 
                     </tr>
 
-                    <ui:repeat id="Myrepeat" value="#{propertyApplication.properties}"  var="property" varStatus="status">
+                    <ui:repeat id="Myrepeat" value="#{propertyApplication.properties}"  var="property" varStatus="status"> 
 
                         <tr onclick="document.getElementById('MyForm:principle').value = document.getElementById('MyForm:Myrepeat:#{status.index}:outPrice').textContent;
-                            document.getElementById('MyForm:selectedId').value = document.getElementById('MyForm:Myrepeat:#{status.index}:MainPropertyID').textContent;">
+                            document.getElementById('MyForm:selectedId').value = document.getElementById('MyForm:Myrepeat:#{status.index}:MainPropertyID').textContent;"> 
                             <td>
-                                <h:outputText value="#{propertyApplication.properties.get(status.index).propertyId}" id="MainPropertyID" />
+                                <h:outputText value="#{propertyApplication.properties.get(status.index).propertyId}" id="MainPropertyID" /> 
 
                             </td>
 
-                            <td>
+                            <td> 
                                 <h:outputText id="outPrice" value="#{propertyApplication.properties.get(status.index).price}"  />
                             </td>
                             <td>
@@ -68,9 +68,9 @@
                                 <h:outputText value=" "/>
                             </td>
 
-                        </tr>
+                        </tr> 
 
-                    </ui:repeat>
+                    </ui:repeat> 
 
                 </table>
 
@@ -82,12 +82,12 @@
                     </h:commandButton>
                 </div>
                 <div>
-                    <h:inputText value="#{searchProperty.searchByInt}" id="searchById" required="true" onchange ="if (document.getElementById('MyForm:searchById').value.trim() == '') {document.getElementById('MyForm:searchById').value = 0;} "  />
+                    <h:inputText value="#{searchProperty.searchByInt}" id="searchById" required="true" onchange ="if (document.getElementById('MyForm:searchById').value.trim() == '') {document.getElementById('MyForm:searchById').value = 0;} "  /> 
                     <h:commandButton id="searchId" value="Search by Id" action="#{searchProperty.searchPropertyById(searchProperty.searchByInt)}" class="btn btn-primary" >
                         <f:param name="propertyID" value="#{status.index + 1}"/>
                     </h:commandButton>
 
-                    <h:inputText value="#{searchProperty.searchByDouble}" id="searchByBudget" required="true" onchange="if (document.getElementById('MyForm:searchByBudget').value.trim() == '') {document.getElementById('MyForm:searchByBudget').value = 0.0;} " />
+                    <h:inputText value="#{searchProperty.searchByDouble}" id="searchByBudget" required="true" onchange="if (document.getElementById('MyForm:searchByBudget').value.trim() == '') {document.getElementById('MyForm:searchByBudget').value = 0.0;} " /> 
                     <h:commandButton id="searchBudget" value="Search by Budget" action="#{searchProperty.searchPropertyByBudget(searchProperty.searchByDouble)}" class="btn btn-primary" >
                         <f:param name="propertyID" value="#{status.index + 1}"/>
                     </h:commandButton>
@@ -95,7 +95,7 @@
 
                     <h:selectOneMenu id="contact" value="#{searchProperty.contactPersonId}" >
                         <f:selectItem itemValue="#{null}" itemLabel="--select--" />
-                        <f:selectItems value="#{propertyManagedBean.allContactPeople}" var="c"
+                        <f:selectItems value="#{propertyManagedBean.allContactPeople}" var="c"  
                                        itemLabel="#{c.name}" itemValue="#{c.conactPersonId}" />
                     </h:selectOneMenu>
                     <h:commandButton id="searchByContact" value="Search by Contact" action="#{searchProperty.searchPropertyByContactPersonId(searchProperty.contactPersonId)}" class="btn btn-primary" >
@@ -104,7 +104,7 @@
                 </div>
                 <div>
                     <br />
-                    <hr style="border-color: lightgrey;" />
+                    <hr style="border-color: lightgrey;" /> 
                     <table>
                         <tr>
                             <td width="500">
@@ -116,7 +116,7 @@
                         </tr>
                     </table>
                 </div>
-
+                    
                     <br />
                     <br />
                 <table>
@@ -129,12 +129,12 @@
                             </h:inputText>
                         </td>
                         <td>
-                            Selected property id:
+                            Selected property id: 
                         </td>
                         <td>
                             <h:inputText id="selectedId" value="#{propertyManagedBean.selectedId}"  ></h:inputText>
                         </td>
-
+                       
                     </tr>
                     <tr>
                         <td>Interest Rate:</td>
@@ -149,29 +149,21 @@
 
                             </h:selectOneListbox></td>
                         <td>
-
+                            
                         </td>
                         <td>
                             <h:commandButton id="addCompare" value="AddCompare" action="#{propertyManagedBean.addPropertyID()}" />&nbsp; &nbsp;
                             <h:commandButton id="removeCompare" value="RemoveCompare" action="#{propertyManagedBean.removePropertyID()}" />
                         </td>
-
+                        
                     </tr>
                     <tr>
                         <td>Number of Years: </td>
                         <td><h:inputText id="numberOfYears" value="#{loanManagedBean.loan.numberOfYears}">
                                 <f:converter converterId="javax.faces.Integer" />
-                             <f:validateLongRange minimum ="1"/>
-                             
-                          <!-- add the validation long range, the number of year would only be valid once the year le 1 -->
-                             </h:inputText>
-                            <h:message for = "numberOfYears"
-                            class="#{!numberOfYears.valid ? 'label label-warning':'none'}"/>
-                            <!-- warning -->
-                            
-                            </td>
+                            </h:inputText></td>
                         <td>
-
+                            
                         </td>
                         <td>
                             <h:commandButton id="bestPerRoom" value="BestPerRoom" action="#{propertyManagedBean.bestPerRoom()}" />&nbsp; &nbsp;
@@ -194,8 +186,9 @@
                     </tr>
                 </table>
 
-
+                    
             </h:form>
         </div>
     </h:body>
 </html>
+

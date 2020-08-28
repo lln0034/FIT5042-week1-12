@@ -41,6 +41,7 @@ public class Address implements Serializable {
     }
 
     //complete by adding annotation here for column name = "street_address"
+    @Column(name = "street_address")
     public String getStreetAddress() {
         return streetAddress;
     }
@@ -58,6 +59,7 @@ public class Address implements Serializable {
     }
 
     //complete by adding annotation here for column name = "postcode"
+    @Column(name = "postcode")
     public String getPostcode() {
         return postcode;
     }

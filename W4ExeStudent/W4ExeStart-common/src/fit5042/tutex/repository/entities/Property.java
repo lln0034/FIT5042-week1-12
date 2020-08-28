@@ -66,8 +66,6 @@ public class Property implements Serializable {
 
     //insert annotation here to make addess as embeded to Property entity and stored as part of Property
     @Embedded
-    @Column(name="address")
-    @OneToOne
     public Address getAddress() {
         return address;
     }

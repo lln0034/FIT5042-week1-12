@@ -9,6 +9,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Embeddable;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,11 +34,9 @@ public class Property implements Serializable {
     private double size;
     private int numberOfBedrooms;
     private double price;
-    @Embedded
+    
     private Address address;
-    @ManyToOne
     private ContactPerson contactPerson;
-    @OneToMany
     private Set<String> tags;
 
     public Property() {
@@ -66,6 +65,9 @@ public class Property implements Serializable {
     }
 
     //insert annotation here to make addess as embeded to Property entity and stored as part of Property
+    @Embedded
+    @Column(name="address")
+    @OneToOne
     public Address getAddress() {
         return address;
     }
@@ -100,6 +102,7 @@ public class Property implements Serializable {
     }
 
     //enforce the relationship between a property and its contact person using annotation(s). Each property has one and only one contact person. Each contact person might be responsible for zero to many properties
+    @ManyToOne
     public ContactPerson getContactPerson() {
         return contactPerson;
     }
@@ -109,7 +112,9 @@ public class Property implements Serializable {
     }
 
     //annotate the attribute tags in Property class so that the tags of a property will be stored in a table called TAG. The tags of a property should be eagerly fetched and the value of each tag must be stored in a column VALUE in the TAG table
-    @ElementCollection
+    @ElementCollection(fetch=FetchType.EAGER)
+    @CollectionTable(name="TAG")
+    @Column(name="VALUE")
     public Set<String> getTags() {
         return tags;
     }
